@@ -1,11 +1,25 @@
 ---
 name: yougile
 description: Interact with Yougile project management API. Use for managing projects, boards, tasks, stickers, chats, and more in Yougile.
+argument-hint: "[request] api_key=KEY"
 ---
 
 # Yougile API Skill
 
 This skill enables interaction with the Yougile project management API. You can list, create, update, and manage projects, boards, tasks, stickers, chats, and more.
+
+## User Request
+
+$ARGUMENTS
+
+## Parsing Arguments
+
+Extract from the user's request above:
+- **api_key**: Look for `api_key=VALUE` or `key=VALUE` pattern
+- **Request**: Everything else describes what operation to perform
+- **IDs**: Look for patterns like `board_id=`, `project_id=`, `task_id=`, or UUIDs
+
+If no arguments provided or api_key is missing, ask the user interactively.
 
 ## Authentication
 
