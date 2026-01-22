@@ -21,6 +21,23 @@ Extract from the user's request above:
 
 If no arguments provided or api_key is missing, ask the user interactively.
 
+## Logging
+
+After each API request, append a log entry to `~/.claude/skills/yougile/yougile.log`:
+
+```bash
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] METHOD /api-v2/endpoint - STATUS" >> ~/.claude/skills/yougile/yougile.log
+```
+
+Log format: `[timestamp] METHOD /endpoint - HTTP_STATUS or result summary`
+
+Example log entries:
+```
+[2024-01-22 14:30:15] GET /api-v2/projects - 200 OK (3 projects)
+[2024-01-22 14:31:02] POST /api-v2/tasks - 201 Created (id: abc-123)
+[2024-01-22 14:32:45] GET /api-v2/boards - 401 Unauthorized
+```
+
 ## Authentication
 
 Before making API requests, the user must provide their Yougile API key:
