@@ -98,13 +98,26 @@ All API requests use: `https://yougile.com/api-v2`
 
 **IMPORTANT:** All write operations (POST, PUT, DELETE) require explicit user confirmation before execution.
 
-Before executing any write operation, present to the user:
-1. The operation being performed
-2. The endpoint and method
-3. The request body (if applicable)
-4. Ask: "Do you want to proceed with this operation?"
+Before executing any write operation, **fetch and display human-readable names** (not just IDs):
 
-Only execute after receiving explicit confirmation.
+1. **Company name** - fetch via `GET /api-v2/companies*`
+2. **Project name** - fetch via `GET /api-v2/projects/{id}` if project involved
+3. **Board name** - fetch via `GET /api-v2/boards/{id}` if board involved
+4. **Column name** - fetch via `GET /api-v2/columns/{id}` if column involved
+
+Then present confirmation like:
+```
+Operation: Create Task
+Company: "Acme Corp"
+Project: "Website Redesign"
+Board: "Development"
+Column: "To Do"
+Task title: "Fix login bug"
+
+Proceed? (yes/no)
+```
+
+Only execute after receiving explicit "yes" confirmation.
 
 ## Executing Requests
 
